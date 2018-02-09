@@ -1,0 +1,28 @@
+{
+  "name": "electron-timer",
+  "version": "1.0.0",
+  "description": "A Timer developed in Electron",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JulianoGTZ/Electron-Timer.git"
+  },
+  "keywords": [
+    "Electron",
+    "App",
+    "Timer"
+  ],
+  "author": "Juliano Pereira Lima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JulianoGTZ/Electron-Timer/issues"
+  },
+  "homepage": "https://github.com/JulianoGTZ/Electron-Timer#readme",
+  "dependencies": {
+    "electron": "^1.8.2"
+  }
+}
