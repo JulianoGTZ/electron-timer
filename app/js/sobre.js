@@ -1,18 +1,18 @@
-const {ipcRenderer, shell } = require('electron');
-const process = require('process');
+const { ipcRenderer, shell } = require('electron');
+    const process = require('process');
 
 let linkFechar = document.querySelector("#link-fechar");
-let linkGithub = document.querySelector("#link-github");
+let linkTwitter = document.querySelector("#link-github");
 let versaoElectron = document.querySelector('#versao-electron');
 
-window.onload = () => {
+window.onload = function(){
     versaoElectron.textContent = process.versions.electron;
-};
+}
 
-linkFechar.addEventListener('click', ()=>{
+linkFechar.addEventListener('click', function () {
     ipcRenderer.send('fechar-janela-sobre');
-});
+})
 
-linkGithub.addEventListener('click',()=>{
+linkTwitter.addEventListener('click', function () {
     shell.openExternal("https://github.com/JulianoGTZ");
-});
+})
