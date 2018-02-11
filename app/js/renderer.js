@@ -6,6 +6,8 @@ let linkSobre = document.querySelector('#link-sobre');
 let botaoPlay = document.querySelector('.botao-play');
 let tempo = document.querySelector('.tempo');
 let curso = document.querySelector('.curso');
+let botaoAdicionar = document.querySelector('.botao-adicionar');
+let campoAdicionar = document.querySelector('.campo-adicionar');
 
 /**
  * Tratamento do Clique de Sobre
@@ -44,4 +46,14 @@ ipcRenderer.on('curso-trocado', (event, nomeCurso) => {
         tempo.textContent = dados.tempo;
     });
     curso.textContent = nomeCurso;
+});
+
+botaoAdicionar.addEventListener('click', () => {
+    let novoCurso = campoAdicionar.value;
+    campoAdicionar.textContent = novoCurso;
+    curso.textContent = novoCurso;
+    tempo.textContent = '00:00:00';
+    campoAdicionar.value = '';
+    ipcRenderer.send('curso-adicionado', novoCurso);
+
 });
