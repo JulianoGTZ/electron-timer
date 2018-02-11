@@ -1,5 +1,6 @@
-const {app, BrowserWindow, ipcMain, Tray} = require('electron');
-const data = require('./data.js')
+const {app, BrowserWindow, ipcMain, Tray, Menu} = require('electron');
+const data = require('./data.js');
+const templateGenerator = require('./template');
 
 let tray = null;
 
@@ -13,7 +14,16 @@ app.on('ready', () => {
         width: 600,
         height: 400
     });
+    /**
+     * Tray
+     */
     tray = new Tray(__dirname + '/app/img/icon-tray.png');
+    /**
+     * Sub-Menu do Tray
+     */
+    let template = templateGenerator.geraTrayTemplate(mainWindow);
+    let trayMenu = Menu.buildFromTemplate(template);
+    tray.setContextMenu(trayMenu);
     mainWindow.loadURL(`file://${__dirname}/app/index.html`);
 });
 

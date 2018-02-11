@@ -21,11 +21,11 @@ linkSobre.addEventListener('click', function () {
 let imgs = ['img/play-button.svg', 'img/stop-button.svg'];
 let play = false;
 botaoPlay.addEventListener('click', () => {
-    if(play === true){
+    if (play === true) {
         timer.parar(curso.textContent);
         play = false;
     }
-    else{
+    else {
         timer.iniciar(tempo);
         play = true;
     }
@@ -33,8 +33,15 @@ botaoPlay.addEventListener('click', () => {
     botaoPlay.src = imgs[0];
 });
 
-window.onload = () =>{
-    data.getDadosCurso(curso.textContent).then((dados)=>{
+window.onload = () => {
+    data.getDadosCurso(curso.textContent).then((dados) => {
         tempo.textContent = dados.tempo;
     });
 };
+
+ipcRenderer.on('curso-trocado', (event, nomeCurso) => {
+    data.getDadosCurso(nomeCurso).then((dados) => {
+        tempo.textContent = dados.tempo;
+    });
+    curso.textContent = nomeCurso;
+});
