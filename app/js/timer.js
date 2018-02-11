@@ -9,9 +9,9 @@ module.exports = {
         tempo = moment.duration(elemento.textContent);
         segundos = tempo.asSeconds();
         clearInterval(timer);
-
         timer = setInterval(() => {
             segundos++;
+            tempo = segundos;
             elemento.textContent = this.segundosParaTempoFormatado(segundos);
         }, 1000);
     },
@@ -19,8 +19,9 @@ module.exports = {
         return moment().startOf('day').seconds(segundos).format("HH:mm:ss");
     },
     parar(nomeCurso) {
-        let tempoEstudado = this.segundosParaTempoFormatado(tempo);
         clearInterval(timer);
+        let tempoEstudado = this.segundosParaTempoFormatado(tempo);
+        console.log('tempo estudado',tempoEstudado);
         ipcRenderer.send('curso-parado', nomeCurso, tempoEstudado);
     }
 };
