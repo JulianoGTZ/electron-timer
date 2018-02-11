@@ -28,13 +28,13 @@ botaoPlay.addEventListener('click', () => {
         play = false;
         new Notification('Electron Timer', {
             body: `O curso ${curso.textContent} foi pausado.,`,
-            icon:'img/stop-button.png'
+            icon: 'img/stop-button.png'
         });
     }
     else {
         new Notification('Electron Timer', {
             body: `O curso ${curso.textContent} foi iniciado.`,
-            icon:'img/play-button.png'
+            icon: 'img/play-button.png'
         });
         timer.iniciar(tempo);
         play = true;
@@ -50,13 +50,22 @@ window.onload = () => {
 };
 
 ipcRenderer.on('curso-trocado', (event, nomeCurso) => {
+    timer.parar(curso.textContent);
     data.getDadosCurso(nomeCurso).then((dados) => {
         tempo.textContent = dados.tempo;
+    }).catch((error) => {
+        console.log('curso ainda não possui json', error);
+        tempo.textContent = "00:00:00";
     });
     curso.textContent = nomeCurso;
 });
 
 botaoAdicionar.addEventListener('click', () => {
+
+    if (campoAdicionar.value === '') {
+        return;
+    }
+
     let novoCurso = campoAdicionar.value;
     campoAdicionar.textContent = novoCurso;
     curso.textContent = novoCurso;

@@ -1,6 +1,6 @@
 const {ipcRenderer} = require('electron');
 const moment = require('moment');
-let segundos;
+let segundos = 0;
 let timer;
 let tempo;
 
