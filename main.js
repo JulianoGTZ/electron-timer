@@ -1,4 +1,5 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
+const data = require('./data.js')
 
 /**
  * Inicialização da Janela Principal
@@ -48,10 +49,13 @@ ipcMain.on('abrir-janela-sobre', () => {
 /**
  * Escuta evento de fechamento de janela
  */
-ipcMain.on('fechar-janela-sobre',() =>{
-   sobreWindow.close();
+ipcMain.on('fechar-janela-sobre', () => {
+    sobreWindow.close();
 });
 
-ipcMain.on('curso-parado',(event,curso,tempoEstudado)=>{
-    console.log(`${curso} foi estudado por ${tempoEstudado} `);
+/**
+ * Evento que escuta o 'stop' do curso
+ */
+ipcMain.on('curso-parado', (event, curso, tempoEstudado) => {
+    data.salvaDados(curso, tempoEstudado);
 });
