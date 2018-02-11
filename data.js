@@ -32,5 +32,9 @@ module.exports = {
         }).catch((error) => {
             console.log('aconteceu o seguinte erro',error);
         });
+    },
+    getDadosCurso(nomeCurso){
+        let caminhoArquivoCurso = __dirname + '/data/' + nomeCurso + '.json';
+        return jsonfile.readFile(caminhoArquivoCurso)
     }
 };
