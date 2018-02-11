@@ -24,6 +24,14 @@ app.on('ready', () => {
     let template = templateGenerator.geraTrayTemplate(mainWindow);
     let trayMenu = Menu.buildFromTemplate(template);
     tray.setContextMenu(trayMenu);
+
+    let templateMenu = templateGenerator.geraMenuPrincipalTemplate(app);
+
+    let menuPrincipal = Menu.buildFromTemplate(templateMenu);
+
+    //mainWindow.openDevTools();
+    Menu.setApplicationMenu(menuPrincipal);
+
     mainWindow.loadURL(`file://${__dirname}/app/index.html`);
 });
 
