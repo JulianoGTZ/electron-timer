@@ -70,7 +70,8 @@ module.exports = {
                         label: 'Sobre o Electron Timer',
                         click: () => {
                             ipcMain.emit('abrir-janela-sobre');
-                        }
+                        },
+                        accelerator: 'CommandOrControl+I'
                     }
                 ]
             }

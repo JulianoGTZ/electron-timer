@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain, Tray, Menu} = require('electron');
+const {app, BrowserWindow, ipcMain, Tray, Menu, globalShortcut} = require('electron');
 const data = require('./data.js');
 const templateGenerator = require('./template');
 
@@ -30,6 +30,10 @@ app.on('ready', () => {
     let menuPrincipal = Menu.buildFromTemplate(templateMenu);
 
     //mainWindow.openDevTools();
+    globalShortcut.register('CmdOrCtrl+Shift+S', () => {
+        mainWindow.send('atalho-iniciar-parar');
+
+    });
     Menu.setApplicationMenu(menuPrincipal);
 
     mainWindow.loadURL(`file://${__dirname}/app/index.html`);
