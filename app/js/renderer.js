@@ -26,8 +26,16 @@ botaoPlay.addEventListener('click', () => {
     if (play === true) {
         timer.parar(curso.textContent);
         play = false;
+        new Notification('Electron Timer', {
+            body: `O curso ${curso.textContent} foi pausado.,`,
+            icon:'img/stop-button.png'
+        });
     }
     else {
+        new Notification('Electron Timer', {
+            body: `O curso ${curso.textContent} foi iniciado.`,
+            icon:'img/play-button.png'
+        });
         timer.iniciar(tempo);
         play = true;
     }
