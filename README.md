@@ -1,6 +1,18 @@
-# Electron-Timer
-A Timer Developed in Electron
+### Electron-Timer
+A Timer Developed in Electron. 
 
-An application developed in electron, and other web technologies blockbusters.
+### Get Started Immediately
 
-Happy Hacking.
+First, install all dependencies with the following command:
+
+```sh
+npm install
+```
+
+start the application:
+
+```sh
+npm start
+```
+
+**Happy Hacking** :tada:.
