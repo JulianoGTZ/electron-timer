@@ -23,8 +23,12 @@
   },
   "homepage": "https://github.com/JulianoGTZ/Electron-Timer#readme",
   "dependencies": {
+<<<<<<< HEAD
     "electron": "^2.0.5",
+=======
+    "electron": "^1.8.6",
+>>>>>>> 5b6254e33b79bed59e96c86f4d2456e81c7a6a31
     "jsonfile-promised": "0.0.1",
-    "moment": "^2.20.1"
+    "moment": "^2.22.1"
   }
 }
