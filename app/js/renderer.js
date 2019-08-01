@@ -13,7 +13,7 @@ let campoAdicionar = document.querySelector('.campo-adicionar');
  * Tratamento do Clique de Sobre
  */
 linkSobre.addEventListener('click', function () {
-    ipcRenderer.send('abrir-janela-sobre');
+    ipcRenderer.send('open-window-about');
 });
 
 /**

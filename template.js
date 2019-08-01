@@ -67,9 +67,9 @@ module.exports = {
                 label: 'Sobre',
                 submenu: [
                     {
-                        label: 'Sobre o Electron Timer',
+                        label: 'About Electron Timer',
                         click: () => {
-                            ipcMain.emit('abrir-janela-sobre');
+                            ipcMain.emit('open-window-about');
                         },
                         accelerator: 'CommandOrControl+I'
                     }

@@ -9,7 +9,6 @@ let mainWindow;
  * Inicialização da Janela Principal
  */
 app.on('ready', () => {
-    console.log("Aplicação on the air!")
     mainWindow = new BrowserWindow({
         width: 600,
         height: 400
@@ -51,7 +50,7 @@ app.on('window-all-close', () => {
  * @type {null}
  */
 let sobreWindow = null;
-ipcMain.on('abrir-janela-sobre', () => {
+ipcMain.on('open-window-about', () => {
     if (sobreWindow === null) {
         sobreWindow = new BrowserWindow({
             width: 300,
