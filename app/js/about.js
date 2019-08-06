@@ -1,18 +1,18 @@
-const { ipcRenderer, shell } = require('electron');
-    const process = require('process');
+const { ipcRenderer, shell } = require("electron");
+const process = require("process");
 
 let closeLink = document.querySelector("#link-fechar");
 let twitterLink = document.querySelector("#link-github");
-let electronVersion = document.querySelector('#electron-version');
+let electronVersion = document.querySelector("#electron-version");
 
-window.onload = function(){
-    electronVersion.textContent = process.versions.electron;
-}
+window.onload = function() {
+  electronVersion.textContent = process.versions.electron;
+};
 
-closeLink.addEventListener('click', function () {
-    ipcRenderer.send('close-about-window');
-})
+closeLink.addEventListener("click", function() {
+  ipcRenderer.send("close-about-window");
+});
 
-twitterLink.addEventListener('click', function () {
-    shell.openExternal("https://github.com/JulianoGTZ");
-})
+twitterLink.addEventListener("click", function() {
+  shell.openExternal("https://github.com/JulianoGTZ");
+});
