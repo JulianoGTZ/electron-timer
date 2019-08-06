@@ -37,17 +37,17 @@ playButton.addEventListener("click", () => {
 });
 
 window.onload = () => {
-  data.getDadosCurso(course.textContent).then(data => {
-    time.textContent = data.tempo;
+  data.getDataCourse(course.textContent).then(data => {
+    time.textContent = data.time;
   });
 };
 
 ipcRenderer.on("exchanged-course", (event, courseName) => {
   timer.stop(course.textContent);
   data
-    .getDadosCurso(courseName)
+    .getDataCourse(courseName)
     .then(data => {
-      time.textContent = data.tempo;
+      time.textContent = data.time;
     })
     .catch(error => {
       console.log("The course doesn't have a json yet", error);
