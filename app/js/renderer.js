@@ -5,7 +5,7 @@ data = require("../../data");
 let linkAbout = document.querySelector("#link-sobre");
 let playButton = document.querySelector(".play-button");
 let time = document.querySelector(".time");
-let course = document.querySelector(".curso");
+let course = document.querySelector(".course");
 let addButton = document.querySelector(".botao-adicionar");
 let addField = document.querySelector(".campo-adicionar");
 
