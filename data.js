@@ -1,46 +1,49 @@
-const jsonfile = require('jsonfile-promised');
-const fs = require('fs');
+const jsonfile = require("jsonfile-promised");
+const fs = require("fs");
 
 module.exports = {
-    salvaDados(curso, tempoCursoEstudado) {
+  saveData(course, timeCourseStudied) {
+    let filePathWithSpentTimeOnCourse = __dirname + "/data/" + course + ".json";
 
-        let enderecoArquivoTempoGastoCurso = __dirname + '/data/' + curso + '.json';
-
-        if (fs.existsSync(enderecoArquivoTempoGastoCurso)) {
-            this.adicionaTempoAoCurso(enderecoArquivoTempoGastoCurso, tempoCursoEstudado);
-        } else {
-            this.criaArquivoCurso(enderecoArquivoTempoGastoCurso, {}).then(() => {
-                this.adicionaTempoAoCurso(enderecoArquivoTempoGastoCurso, tempoCursoEstudado)
-            })
-        }
-    },
-    criaArquivoCurso(nomeArquivo, conteudoArquivo) {
-        return jsonfile.writeFile(nomeArquivo, conteudoArquivo).then(() => {
-            console.log('Arquivo criado');
-        }).catch((error) => {
-            console.log(error);
-        });
-    },
-    adicionaTempoAoCurso(arquivoCurso, tempoGastoCurso) {
-        let dados = {
-            ultimoEstudo: new Date().toString(),
-            tempo: tempoGastoCurso
-        };
-        jsonfile.writeFile(arquivoCurso, dados, {spaces: 2}).then(() => {
-            console.log('tempo salvo com sucesso no arquivo');
-        }).catch((error) => {
-            console.log('aconteceu o seguinte erro', error);
-        });
-    },
-    getDadosCurso(nomeCurso) {
-        let caminhoArquivoCurso = __dirname + '/data/' + nomeCurso + '.json';
-        return jsonfile.readFile(caminhoArquivoCurso)
-    },
-    getNomesCursos() {
-        let arquivos = fs.readdirSync(__dirname + '/data/');
-        let cursos = arquivos.map((arquivo) => {
-            return arquivo.substr(0, arquivo.lastIndexOf('.'));
-        });
-        return cursos;
+    if (fs.existsSync(filePathWithSpentTimeOnCourse)) {
+      this.addCourseTime(filePathWithSpentTimeOnCourse, timeCourseStudied);
+    } else {
+      this.createCourseFile(filePathWithSpentTimeOnCourse, {}).then(() => {
+        this.addCourseTime(filePathWithSpentTimeOnCourse, timeCourseStudied);
+      });
     }
+  },
+  async createCourseFile(filename, contentFile) {
+    try {
+      await jsonfile.writeFile(filename, contentFile);
+      console.log("created File.");
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  addCourseTime(courseFile, expendedTimeOnCourse) {
+    let data = {
+      lastStudy: new Date().toString(),
+      time: expendedTimeOnCourse
+    };
+    jsonfile
+      .writeFile(courseFile, data, { spaces: 2 })
+      .then(() => {
+        console.log("Time saved successfully.");
+      })
+      .catch(error => {
+        console.log("error: ", error);
+      });
+  },
+  getCourseData(courseName) {
+    let pathCourseFile = __dirname + "/data/" + courseName + ".json";
+    return jsonfile.readFile(pathCourseFile);
+  },
+  getCourseNames() {
+    let files = fs.readdirSync(__dirname + "/data/");
+    let courses = files.map(file => {
+      return file.substr(0, file.lastIndexOf("."));
+    });
+    return courses;
+  }
 };
