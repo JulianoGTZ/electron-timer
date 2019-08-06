@@ -103,7 +103,7 @@ html, body {
     z-index: 1;
 }
 
-.botao-adicionar {
+.add-button {
     width: 30px;
     display: inline-block;
     vertical-align: middle;

@@ -6,7 +6,7 @@ let linkAbout = document.querySelector("#link-sobre");
 let playButton = document.querySelector(".play-button");
 let time = document.querySelector(".time");
 let course = document.querySelector(".course");
-let addButton = document.querySelector(".botao-adicionar");
+let addButton = document.querySelector(".add-button");
 let addField = document.querySelector(".campo-adicionar");
 
 linkAbout.addEventListener("click", function() {
