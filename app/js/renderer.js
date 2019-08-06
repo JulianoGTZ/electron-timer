@@ -7,7 +7,7 @@ let playButton = document.querySelector(".play-button");
 let time = document.querySelector(".time");
 let course = document.querySelector(".course");
 let addButton = document.querySelector(".add-button");
-let addField = document.querySelector(".campo-adicionar");
+let addField = document.querySelector(".add-field");
 
 linkAbout.addEventListener("click", function() {
   ipcRenderer.send("open-window-about");
