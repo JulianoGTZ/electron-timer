@@ -46,7 +46,7 @@ ipcRenderer.on("curso-trocado", (event, courseName) => {
   timer.stop(course.textContent);
   data
     .getDadosCurso(courseName)
-    .then(dados => {
+    .then(data => {
       time.textContent = data.tempo;
     })
     .catch(error => {
