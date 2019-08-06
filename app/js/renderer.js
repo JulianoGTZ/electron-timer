@@ -70,7 +70,7 @@ addButton.addEventListener("click", () => {
   ipcRenderer.send("added-course", newCourse);
 });
 
-ipcRenderer.on("atalho-iniciar-parar", () => {
+ipcRenderer.on("shortcut-start-stop", () => {
   let click = new MouseEvent("click");
   playButton.dispatchEvent(click);
 });

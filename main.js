@@ -30,7 +30,7 @@ app.on('ready', () => {
 
     //mainWindow.openDevTools();
     globalShortcut.register('CmdOrCtrl+Shift+S', () => {
-        mainWindow.send('atalho-iniciar-parar');
+        mainWindow.send('shortcut-start-stop');
 
     });
     Menu.setApplicationMenu(menuPrincipal);
