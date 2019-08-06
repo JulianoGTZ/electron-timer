@@ -21,7 +21,7 @@ module.exports = {
                 label: curso,
                 type: 'radio',
                 click: () => {
-                    win.send('curso-trocado', curso);
+                    win.send('exchanged-course', curso);
                 }
             };
             template.push(menuItem);
@@ -35,7 +35,7 @@ module.exports = {
             type: 'radio',
             checked: true,
             click: () => {
-                win.send('curso-trocado', curso);
+                win.send('exchanged-course', curso);
             }
         });
 

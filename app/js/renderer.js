@@ -42,7 +42,7 @@ window.onload = () => {
   });
 };
 
-ipcRenderer.on("curso-trocado", (event, courseName) => {
+ipcRenderer.on("exchanged-course", (event, courseName) => {
   timer.stop(course.textContent);
   data
     .getDadosCurso(courseName)
