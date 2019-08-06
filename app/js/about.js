@@ -1,7 +1,7 @@
 const { ipcRenderer, shell } = require("electron");
 const process = require("process");
 
-let closeLink = document.querySelector("#link-fechar");
+let closeLink = document.querySelector("#close-link");
 let twitterLink = document.querySelector("#link-github");
 let electronVersion = document.querySelector("#electron-version");
 
