@@ -6,13 +6,13 @@ A Timer Developed in Electron.
 First, install all dependencies with the following command:
 
 ```sh
-npm install
+yarn install
 ```
 
 start the application:
 
 ```sh
-npm start
+yarn start
 ```
 
 **Happy Hacking** :tada:.
