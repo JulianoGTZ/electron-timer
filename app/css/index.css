@@ -14,7 +14,7 @@ html, body {
    font-family: 'Roboto', sans-serif;
    background: url(../img/texture.png) top left repeat;
 }
-.titulo{
+.title{
     color: #5271FF;
     text-transform: capitalize;
     text-align: center;
@@ -29,7 +29,7 @@ html, body {
     margin-top: 30px;
 }
 
-.relogio{
+.clock{
     display: inline-block;
     width: 75%;
     text-align: center;
@@ -38,7 +38,7 @@ html, body {
     background-color: #879CFF;
 }
 
-.controles{
+.controls{
     width: 25%;
     height: 75%;
     /*margin-bottom: 5px;*/
@@ -47,20 +47,20 @@ html, body {
 
 }
 
-.botao-play{
+.play-button{
     width: 65%;
     padding-top: 13px;
     margin: 0 auto;
     display: block;
 }
-.tempo{
+.time{
     font-size: 5.5em;
     color: #FFFFFF;
     display: inline-block;
     padding-top: 8px;
 }
 
-.curso-container{
+.course-container{
     height: 25%;
     width: 100%;
     text-align: center;

@@ -3,8 +3,8 @@ const timer = require("./timer");
 data = require("../../data");
 
 let linkAbout = document.querySelector("#link-sobre");
-let playButton = document.querySelector(".botao-play");
-let time = document.querySelector(".tempo");
+let playButton = document.querySelector(".play-button");
+let time = document.querySelector(".time");
 let course = document.querySelector(".curso");
 let addButton = document.querySelector(".botao-adicionar");
 let addField = document.querySelector(".campo-adicionar");
