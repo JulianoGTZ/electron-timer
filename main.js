@@ -49,10 +49,10 @@ app.on('window-all-close', () => {
  * Renderização da Janela de Sobre
  * @type {null}
  */
-let sobreWindow = null;
+let aboutWindow = null;
 ipcMain.on('open-window-about', () => {
-    if (sobreWindow === null) {
-        sobreWindow = new BrowserWindow({
+    if (aboutWindow === null) {
+        aboutWindow = new BrowserWindow({
             width: 300,
             height: 220,
             alwaysOnTop: true,
@@ -63,18 +63,18 @@ ipcMain.on('open-window-about', () => {
     /**
      * Trata Fechamento de janela, para não ser excluída via garbage collection
      */
-    sobreWindow.on('closed', () => {
-        sobreWindow = null;
+    aboutWindow.on('closed', () => {
+        aboutWindow = null;
     });
 
-    sobreWindow.loadURL(`file://${__dirname}/app/sobre.html`);
+    aboutWindow.loadURL(`file://${__dirname}/app/about.html`);
 });
 
 /**
  * Escuta evento de fechamento de janela
  */
 ipcMain.on('fechar-janela-sobre', () => {
-    sobreWindow.close();
+    aboutWindow.close();
 });
 
 /**
