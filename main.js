@@ -84,7 +84,7 @@ ipcMain.on('stopped-course', (event, curso, tempoEstudado) => {
     data.salvaDados(curso, tempoEstudado);
 });
 
-ipcMain.on('curso-adicionado', (event, novoCurso) => {
+ipcMain.on('added-course', (event, novoCurso) => {
     let novoTemplate = templateGenerator.adicionaCursoNoTray(novoCurso, mainWindow);
     let novoTrayMenu = Menu.buildFromTemplate(novoTemplate);
     tray.setContextMenu(novoTrayMenu);

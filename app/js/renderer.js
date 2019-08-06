@@ -66,7 +66,8 @@ addButton.addEventListener("click", () => {
   course.textContent = newCourse;
   time.textContent = "00:00:00";
   addField.value = "";
-  ipcRenderer.send("curso-adicionado", newCourse);
+
+  ipcRenderer.send("added-course", newCourse);
 });
 
 ipcRenderer.on("atalho-iniciar-parar", () => {
