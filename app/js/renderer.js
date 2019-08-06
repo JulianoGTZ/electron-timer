@@ -2,7 +2,7 @@ const { ipcRenderer } = require("electron");
 const timer = require("./timer");
 data = require("../../data");
 
-let linkAbout = document.querySelector("#link-sobre");
+let linkAbout = document.querySelector("#link-about");
 let playButton = document.querySelector(".play-button");
 let time = document.querySelector(".time");
 let course = document.querySelector(".course");
