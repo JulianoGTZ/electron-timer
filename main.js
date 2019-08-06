@@ -73,7 +73,7 @@ ipcMain.on('open-window-about', () => {
 /**
  * Escuta evento de fechamento de janela
  */
-ipcMain.on('fechar-janela-sobre', () => {
+ipcMain.on('close-about-window', () => {
     aboutWindow.close();
 });
 
