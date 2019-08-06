@@ -80,7 +80,7 @@ ipcMain.on('fechar-janela-sobre', () => {
 /**
  * Evento que escuta o 'stop' do curso
  */
-ipcMain.on('curso-parado', (event, curso, tempoEstudado) => {
+ipcMain.on('stopped-course', (event, curso, tempoEstudado) => {
     data.salvaDados(curso, tempoEstudado);
 });
 

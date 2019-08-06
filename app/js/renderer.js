@@ -18,7 +18,7 @@ let play = false;
 
 playButton.addEventListener("click", () => {
   if (play === true) {
-    timer.parar(course.textContent);
+    timer.stop(course.textContent);
     play = false;
     new Notification("Electron Timer", {
       body: `The course ${course.textContent} has been paused.`,
@@ -29,7 +29,7 @@ playButton.addEventListener("click", () => {
       body: `The course ${course.textContent} started.`,
       icon: "img/play-button.png"
     });
-    timer.iniciar(time);
+    timer.start(time);
     play = true;
   }
   imgs = imgs.reverse();
@@ -43,7 +43,7 @@ window.onload = () => {
 };
 
 ipcRenderer.on("curso-trocado", (event, courseName) => {
-  timer.parar(course.textContent);
+  timer.stop(course.textContent);
   data
     .getDadosCurso(courseName)
     .then(dados => {
