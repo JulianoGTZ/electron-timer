@@ -1,5 +1,6 @@
 # Electron-Timer
-A Timer Developed in Electron.  
+
+A timer developed in Electron to control the time spent on activities.
 
 ![Image of Electron timer](electron-timer.png)
 
