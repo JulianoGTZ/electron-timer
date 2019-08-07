@@ -1,6 +1,8 @@
 # Electron-Timer
 A Timer Developed in Electron.  
 
+![Image of Electron timer](electron-timer.png)
+
 ## Get Started Immediately
 
 First, install all dependencies with the following command:
