@@ -1,6 +1,13 @@
-const {app, BrowserWindow, ipcMain, Tray, Menu, globalShortcut} = require('electron');
-const data = require('./data.js');
-const templateGenerator = require('./template');
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  Tray,
+  Menu,
+  globalShortcut
+} = require("electron");
+const data = require("./data.js");
+const templateGenerator = require("./template");
 
 let tray = null;
 let mainWindow;
@@ -8,85 +15,67 @@ let mainWindow;
 /**
  * Inicialização da Janela Principal
  */
-app.on('ready', () => {
-    mainWindow = new BrowserWindow({
-        width: 600,
-        height: 400
-    });
-    /**
-     * Tray
-     */
-    tray = new Tray(__dirname + '/app/img/icon-tray.png');
-    /**
-     * Sub-Menu do Tray
-     */
-    let template = templateGenerator.geraTrayTemplate(mainWindow);
-    let trayMenu = Menu.buildFromTemplate(template);
-    tray.setContextMenu(trayMenu);
+app.on("ready", () => {
+  mainWindow = new BrowserWindow({
+    width: 600,
+    height: 400
+  });
+  tray = new Tray(__dirname + "/app/img/icon-tray.png");
 
-    let templateMenu = templateGenerator.geraMenuPrincipalTemplate(app);
+  let template = templateGenerator.generateTrayTemplate(mainWindow);
+  let traySubMenu = Menu.buildFromTemplate(template);
+  tray.setContextMenu(traySubMenu);
 
-    let menuPrincipal = Menu.buildFromTemplate(templateMenu);
+  let templateMenu = templateGenerator.generateMainMenuTemplate(app);
 
-    //mainWindow.openDevTools();
-    globalShortcut.register('CmdOrCtrl+Shift+S', () => {
-        mainWindow.send('shortcut-start-stop');
+  let mainMenu = Menu.buildFromTemplate(templateMenu);
 
-    });
-    Menu.setApplicationMenu(menuPrincipal);
+  globalShortcut.register("CmdOrCtrl+Shift+S", () => {
+    mainWindow.send("shortcut-start-stop");
+  });
+  Menu.setApplicationMenu(mainMenu);
 
-    mainWindow.loadURL(`file://${__dirname}/app/index.html`);
+  mainWindow.loadURL(`file://${__dirname}/app/index.html`);
 });
 
-/**
- * Fechamento da Janela Principal
- */
-app.on('window-all-close', () => {
-    app.quit();
+app.on("window-all-close", () => {
+  app.quit();
 });
 
-/**
- * Renderização da Janela de Sobre
- * @type {null}
- */
 let aboutWindow = null;
-ipcMain.on('open-window-about', () => {
-    if (aboutWindow === null) {
-        aboutWindow = new BrowserWindow({
-            width: 300,
-            height: 220,
-            alwaysOnTop: true,
-            frame: false
-        });
-    }
-
-    /**
-     * Trata Fechamento de janela, para não ser excluída via garbage collection
-     */
-    aboutWindow.on('closed', () => {
-        aboutWindow = null;
+ipcMain.on("open-window-about", () => {
+  if (aboutWindow === null) {
+    aboutWindow = new BrowserWindow({
+      width: 300,
+      height: 220,
+      alwaysOnTop: true,
+      frame: false
     });
+  }
 
-    aboutWindow.loadURL(`file://${__dirname}/app/about.html`);
+  /**
+   * Handles window close, to not be deleted by garbage collection
+   */
+  aboutWindow.on("closed", () => {
+    aboutWindow = null;
+  });
+
+  aboutWindow.loadURL(`file://${__dirname}/app/about.html`);
 });
 
-/**
- * Escuta evento de fechamento de janela
- */
-ipcMain.on('close-about-window', () => {
-    aboutWindow.close();
+ipcMain.on("close-about-window", () => {
+  aboutWindow.close();
 });
 
-/**
- * Evento que escuta o 'stop' do curso
- */
-ipcMain.on('stopped-course', (event, curso, tempoEstudado) => {
-    data.salvaDados(curso, tempoEstudado);
+ipcMain.on("stopped-course", (event, course, timeStudied) => {
+  data.saveData(course, timeStudied);
 });
 
-ipcMain.on('added-course', (event, novoCurso) => {
-    let novoTemplate = templateGenerator.adicionaCursoNoTray(novoCurso, mainWindow);
-    let novoTrayMenu = Menu.buildFromTemplate(novoTemplate);
-    tray.setContextMenu(novoTrayMenu);
-
+ipcMain.on("added-course", (event, newCourse) => {
+  let newTemplate = templateGenerator.addCourseOnTray(
+    newCourse,
+    mainWindow
+  );
+  let newTrayMenu = Menu.buildFromTemplate(newTemplate);
+  tray.setContextMenu(newTrayMenu);
 });
